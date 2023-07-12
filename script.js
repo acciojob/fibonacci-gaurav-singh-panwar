@@ -1,20 +1,21 @@
 function fibonacci(num) {
-  if (
-    typeof num !== "number" ||
-    !Number.isInteger(num) ||
-    num < 0 ||
-    num > 50
-  ) {
-    throw new Error(
-      "Input must be a non-negative integer between 0 and 50."
-    );
-  }
+  if (num === 0) {
+    return 0;
+  } else if (num === 1) {
+    return 1;
+  } else {
+    let a = 0;
+    let b = 1;
+    let c;
 
-  if (num < 2) {
-    return num;
-  }
+    for (let i = 2; i <= num; i++) {
+      c = a + b;
+      a = b;
+      b = c;
+    }
 
-  return fibonacci(num - 1) + fibonacci(num - 2);
+    return b;
+  }
 }
 
 module.exports = fibonacci;
